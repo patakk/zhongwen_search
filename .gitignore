@@ -48,7 +48,6 @@ create_story.py
 
 data/stories/clips
 
-*.txt
 
 __pycache__/
 *.py[cod]

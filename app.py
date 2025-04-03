@@ -55,7 +55,6 @@ def normalize_query(text):
     return text
 
 @app.route('/search', methods=['GET'])
-
 def search():
     api_key = request.headers.get('X-API-Key')
     if api_key != auth_keys.get('ZHONGWEN_SEARCH_KEY', ''):
@@ -63,7 +62,8 @@ def search():
     query = request.args.get('query', '')
     query = query.strip().lower()
     results = []
-
+    logger.debug("Received search request")
+    logger.debug(f"Query: {query}")
     only_hanzi = all(regex.match(r'\p{Han}', char) for char in query if char.strip())
     if only_hanzi:
         exact_matches = []
