@@ -23,6 +23,7 @@ limiter = Limiter(
     app=app,
 )
 
+
 dictionary = HanziDictionary()
 
 def load_secrets(secrets_file):
