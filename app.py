@@ -42,17 +42,21 @@ def load_secrets(secrets_file):
 
 auth_keys = load_secrets('/home/patakk/.zhongweb-secrets')
 
+
 def remove_tones(pinyin):
     return re.sub(r'[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]', lambda m: 'aeiouü'['āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ'.index(m.group()) // 4], pinyin)
 
+
 def remove_all_numbers(pinyin):
     return re.sub(r'\d', '', pinyin)
+
 
 def normalize_query(text):
     text = text.lower()
     text = text.strip(string.punctuation)
     text = lemmatizer.lemmatize(text)
     return text
+
 
 @app.route('/search', methods=['GET'])
 def search():
